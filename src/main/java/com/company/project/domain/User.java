@@ -1,4 +1,4 @@
-package com.company.project.entities;
+package com.company.project.domain;
 
 import java.io.Serializable;
 import java.util.Objects;

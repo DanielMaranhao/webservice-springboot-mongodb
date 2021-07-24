@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 
-import com.company.project.entities.User;
+import com.company.project.domain.User;
 import com.company.project.repositories.UserRepository;
 
 @Configuration
