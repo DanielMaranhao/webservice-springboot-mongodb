@@ -1,5 +1,7 @@
 package com.company.project.services;
 
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,6 +24,11 @@ public class PostService {
 	}
 	
 	public List<Post> findByTitle(String text) {
-		return repository.findByTitle(text);
+		return repository.findByTitleContainingIgnoreCase(text);
+	}
+	
+	public List<Post> findByTextAndMomentInterval(String text, Instant minMoment, Instant maxMoment) {
+		maxMoment = maxMoment.plus(1, ChronoUnit.DAYS).truncatedTo(ChronoUnit.DAYS).minus(1, ChronoUnit.NANOS);
+		return repository.findByTextAndMomentInterval(text, minMoment, maxMoment);
 	}
 }

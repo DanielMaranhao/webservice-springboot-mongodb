@@ -1,5 +1,6 @@
 package com.company.project.resources;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,18 @@ public class PostResource {
 	public ResponseEntity<List<Post>> findByTitle(@RequestParam(value = "text", defaultValue = "") String text) {
 		text = URL.decodeParam(text);
 		List<Post> list = service.findByTitle(text);			
+		return ResponseEntity.ok().body(list);		
+	}
+	
+	@GetMapping(value = "/fullsearch")
+	public ResponseEntity<List<Post>> findByTextAndMomentInterval(
+			@RequestParam(value = "text", defaultValue = "") String text,
+			@RequestParam(value = "minMoment", defaultValue = "") String minMoment,
+			@RequestParam(value = "maxMoment", defaultValue = "") String maxMoment) {
+		text = URL.decodeParam(text);
+		Instant min = URL.convertMoment(minMoment, Instant.EPOCH);
+		Instant max = URL.convertMoment(maxMoment, Instant.now());
+		List<Post> list = service.findByTextAndMomentInterval(text, min, max);		
 		return ResponseEntity.ok().body(list);		
 	}
 }

@@ -22,7 +22,7 @@ public class Post implements Serializable {
 	private String id;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-	private Instant date;
+	private Instant moment;
 	private String title;
 	private String body;
 	
@@ -31,9 +31,9 @@ public class Post implements Serializable {
 	
 	public Post() {}
 
-	public Post(String id, Instant date, String title, String body, AuthorDTO author) {		
+	public Post(String id, Instant moment, String title, String body, AuthorDTO author) {		
 		this.id = id;
-		this.date = date;
+		this.moment = moment;
 		this.title = title;
 		this.body = body;
 		this.author = author;
@@ -47,12 +47,12 @@ public class Post implements Serializable {
 		this.id = id;
 	}
 
-	public Instant getDate() {
-		return date;
+	public Instant getMoment() {
+		return moment;
 	}
 
-	public void setDate(Instant date) {
-		this.date = date;
+	public void setMoment(Instant moment) {
+		this.moment = moment;
 	}
 
 	public String getTitle() {

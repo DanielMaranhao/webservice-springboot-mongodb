@@ -12,18 +12,18 @@ public class CommentDTO implements Serializable {
 	private String text;
 	
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
-	private Instant date;
+	private Instant moment;
 	
 	private AuthorDTO author;
 			
 	public CommentDTO() {}
 
-	public CommentDTO(String text, Instant date, AuthorDTO author) {		
+	public CommentDTO(String text, Instant moment, AuthorDTO author) {		
 		this.text = text;
-		this.date = date;
+		this.moment = moment;
 		this.author = author;
 	}
-
+	
 	public String getText() {
 		return text;
 	}
@@ -32,12 +32,12 @@ public class CommentDTO implements Serializable {
 		this.text = text;
 	}
 
-	public Instant getDate() {
-		return date;
+	public Instant getMoment() {
+		return moment;
 	}
 
-	public void setDate(Instant date) {
-		this.date = date;
+	public void setMoment(Instant moment) {
+		this.moment = moment;
 	}
 
 	public AuthorDTO getAuthor() {
