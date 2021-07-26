@@ -12,7 +12,7 @@ import com.company.project.dto.AuthorDTO;
 import com.company.project.dto.CommentDTO;
 import com.company.project.repositories.PostRepository;
 import com.company.project.repositories.UserRepository;
-import com.company.project.services.TimeService;
+import com.company.project.resources.util.TimeUtil;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
@@ -35,12 +35,12 @@ public class Instantiation implements CommandLineRunner {
 		
 		userRepository.saveAll(Arrays.asList(u1, u2, u3));
 		
-		Post p1 = new Post(null, TimeService.toInstant("2018-03-21"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(u1));
-		Post p2 = new Post(null, TimeService.toInstant("2018-03-23"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(u1));
+		Post p1 = new Post(null, TimeUtil.toInstant("2018-03-21"), "Partiu viagem", "Vou viajar para São Paulo. Abraços!", new AuthorDTO(u1));
+		Post p2 = new Post(null, TimeUtil.toInstant("2018-03-23"), "Bom dia", "Acordei feliz hoje!", new AuthorDTO(u1));
 		
-		CommentDTO c1 = new CommentDTO("Boa viagem mano!", TimeService.toInstant("2018-03-21"), new AuthorDTO(u2));
-		CommentDTO c2 = new CommentDTO("Aproveite", TimeService.toInstant("2018-03-22"), new AuthorDTO(u3));
-		CommentDTO c3 = new CommentDTO("Tenha um ótimo dia!", TimeService.toInstant("2018-03-23"), new AuthorDTO(u2));
+		CommentDTO c1 = new CommentDTO("Boa viagem mano!", TimeUtil.toInstant("2018-03-21"), new AuthorDTO(u2));
+		CommentDTO c2 = new CommentDTO("Aproveite", TimeUtil.toInstant("2018-03-22"), new AuthorDTO(u3));
+		CommentDTO c3 = new CommentDTO("Tenha um ótimo dia!", TimeUtil.toInstant("2018-03-23"), new AuthorDTO(u2));
 		
 		p1.getComments().addAll(Arrays.asList(c1, c2));
 		p2.getComments().add(c3);
